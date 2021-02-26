@@ -77,7 +77,7 @@ public class FireView extends View {
 
         firePixels = new int[fireWidth * fireHeight];
 
-        for (int x = 0; x < fireWidth; x ++) {
+        for (int x = 0; x < fireWidth; x++) {
             firePixels[(fireHeight - 1) * fireWidth + x] = firePalette.length - 1;
         }
         bitmap = Bitmap.createBitmap(fireWidth, fireHeight, Bitmap.Config.RGB_565);
@@ -92,11 +92,11 @@ public class FireView extends View {
 
     private void drawFire(Canvas canvas) {
         final int pixelCount = fireWidth * fireHeight;
-        if (bitmapPixels == null || bitmapPixels.length < pixelCount ) {
+        if (bitmapPixels == null || bitmapPixels.length < pixelCount) {
             bitmapPixels = new int[pixelCount];
         }
 
-        final int startY = this.minHotY < 0 ? 0 : minHotY;
+        final int startY = Math.max(this.minHotY, 0);
 
         for (int y = startY; y < fireHeight; y++) {
             for (int x = 0; x < fireWidth; x++) {
